@@ -1,0 +1,241 @@
+ 
+ {% extends "patials/base.html" %}
+ {% load static %}
+ {% block content %}
+
+    <!-- End Header Section -->
+
+    <!-- Start Slider Section -->
+    <section class="slider slider-type-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active slider-area background_bg" data-img-src="{% static 'image/slider-img-4.jpg' %}">
+                                <div class="banner_slide_content text-white">
+                                    <div class="slider-caption">
+                                        <h1 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">SUMMER SALE</h1>
+                                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">Get up to 50% off your shopping items tomorrow!</p>
+                                        <a href="shop.html" class="btn btn-primary rounded-0 animation" data-animation="fadeInUp" data-animation-delay="1s">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item slider-area background_bg" data-img-src="{% static 'image/slider-img-5.jpg' %}">
+                                <div class="banner_slide_content">
+                                    <div class="slider-caption text-right">
+                                        <h1 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">CHRISTMAS SALE</h1>
+                                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">Get up to 50% off your shopping items tomorrow!</p>
+                                        <a href="shop.html" class="btn btn-primary rounded-0 animation" data-animation="fadeInUp" data-animation-delay="1s">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item slider-area background_bg" data-img-src="{% static 'image/slider-img-6.jpg' %}">
+                                <div class="banner_slide_content text-white">
+                                    <div class="slider-caption text-center">
+                                        <h1 class="animation" data-animation="fadeInDown" data-animation-delay="0.2s">50% OFF IN ALL PRODUCTS</h1>
+                                        <p class="animation" data-animation="fadeInUp" data-animation-delay="0.6s">Get up to 50% off your shopping items tomorrow!</p>
+                                        <a href="shop.html" class="btn btn-primary rounded-0 animation" data-animation="fadeInUp" data-animation-delay="1s">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <ol class="carousel-indicators carousel-style-2">
+                            <li data-target="#carouselExampleControls" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleControls" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleControls" data-slide-to="2"></li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="facility-style-2">
+                        <div class="facility-box">
+                            <div class="facility-inner">
+                                <div class="fb-icon">
+                                    <i class="fa fa-truck"></i>
+                                </div>
+                                <div class="fb-text">
+                                    <h5>FREE DELIVERY</h5>
+                                    <span>Worldwide</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="facility-box">
+                            <div class="facility-inner">
+                                <div class="fb-icon">
+                                    <i class="fa fa-headphones"></i>
+                                </div>
+                                <div class="fb-text">
+                                    <h5>24/ 7 SUPPORT</h5>
+                                    <span>Customer Support</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="facility-box">
+                            <div class="facility-inner">
+                                <div class="fb-icon">
+                                    <i class="fa fa-cc-mastercard"></i>
+                                </div>
+                                <div class="fb-text">
+                                    <h5>PAYMENT</h5>
+                                    <span>Secure System</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="facility-box">
+                            <div class="facility-inner">
+                                <div class="fb-icon">
+                                    <i class="fa fa-trophy"></i>
+                                </div>
+                                <div class="fb-text">
+                                    <h5>TRUSTED</h5>
+                                    <span>enuine Products</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Slider Section -->
+
+    <!-- Start Content Sidebar Section -->
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="left-side-section">
+                        <!-- Start Deals Section -->
+                        <div class="products-section pb_small">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="title">
+                                        <h4>{{categories.count}} Categories</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="products-slider4 products-style-2 same-nav owl-carousel owl-theme" data-margin="30" data-dots="false" data-autoplay="false" data-nav="true" data-loop="false">
+                                        {% for c in categories %}
+                                        <div class="item">
+                                            <div class="product-box common-cart-box">
+                                                <div class="product-img common-cart-img">
+                                                    <a href="{% url 'core:category-product-list' c.cid %}" >
+                                                         <img src="{{c.image.url}}" alt="product-img">    
+                                                    </a>
+                                                                                                  
+                                                </div>
+                                                <div class="product-info common-cart-info">
+                                                    <a href="product-detail.html" class="cart-name">{{c.title}}
+                                                         <p>{{c.category.title}}</p>
+                                                    </a>
+                                                    <p>{{c.category.count}} product{{c.category.count|pluralize}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Deals Section -->
+
+                        <!-- Start Popular Products Section -->
+                      
+                        <!-- End New Collection Section -->
+                    </div>
+                </div>
+               
+                <div class="col-lg-3">
+                    <div class="right-side-section">
+                        <div class="menu-wrap megamenu-style-2  position-relative side-box">
+                            <button type="button" class="categories-btn">
+                            <i class="ion-ios-list-outline"></i><span>All Categories </span>
+                        </button>
+                            <nav id="mega-dropdown-menu" class="section-shadow">
+                                <ul class="list-unstyled components">
+
+                                    {% for c in categories %}                            
+                                    <li>
+                                        <a class="dropdown-toggler" href="#" data-toggle="dropdown" aria-expanded="false">{{c.title}}<i class="ion-plus-round plus-icon"></i><i class="ion-minus-round minus-icon"></i></a>
+                                        
+                                    </li>
+                                    {% endfor %}
+                                    
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="carousel_slide1 shop-hover-style-2 owl-carousel owl-theme owl-loaded owl-drag  side-box">
+                            <a href="#" class="offer-banner shop-hover">
+                            <img src="{% static 'image/offer-banner-4.jpg' %}" alt="offer-banner">
+                            <div class="shop-hover-text">
+                                <div class="shop-hover-wrap">
+                                    <h5>Bold Fashion</h5>
+                                </div>
+                            </div>
+                        </a>
+                            <a href="#" class="offer-banner shop-hover">
+                            <img src="{% static 'image/offer-banner-5.jpg' %}" alt="offer-banner">
+                            <div class="shop-hover-text">
+                                <div class="shop-hover-wrap">
+                                    <h5>Man Fashion</h5>
+                                </div>
+                            </div>
+                        </a>
+                            <a href="#" class="offer-banner shop-hover">
+                            <img src="{% static 'image/offer-banner-6.jpg' %}" alt="offer-banner">
+                            <div class="shop-hover-text">
+                                <div class="shop-hover-wrap">
+                                    <h5>Ladies Fashion</h5>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                        <div class="side-featured-post side-box">
+                            <div class="side-box-title">
+                                <h6>Featured Post</h6>
+                            </div>
+                            <div class="zoom-img">
+                                <img src="{% static 'image/banner-ads-bc.jpg' %}" alt="banner-ads-bc">
+                                <a href="#">There are many variations Of Passages </a>
+                            </div>
+                        </div>
+                        <div class="side-insta-post side-box">
+                            <div class="side-box-title">
+                                <h6>Instagram</h6>
+                            </div>
+                            <div class="side-insta-img link_container">
+                                <a class="image_popup" href="image/instra-large-img-1.png"><img src="{% static 'image/instra-img-1.jpg' %}" alt="insta-post-img"></a>
+                                <a class="image_popup" href="image/instra-large-img-2.jpg"><img src="{% static 'image/instra-img-2.jpg' %}" alt="insta-post-img"></a>
+                                <a class="image_popup" href="image/instra-large-img-3.jpg"><img src="{% static 'image/instra-img-3.jpg' %}" alt="insta-post-img"></a>
+                                <a class="image_popup" href="image/instra-large-img-4.jpg"><img src="{% static 'image/instra-img-4.jpg' %}" alt="insta-post-img"></a>
+                                <a class="image_popup" href="image/instra-large-img-5.jpg"><img src="{% static 'image/instra-img-5.jpg' %}" alt="insta-post-img"></a>
+                                <a class="image_popup" href="image/instra-large-img-6.jpg"><img src="{% static 'image/instra-img-6.jpg' %}" alt="insta-post-img"></a>
+                                <a class="image_popup" href="image/instra-large-img-7.jpg"><img src="{% static 'image/instra-img-7.jpg' %}" alt="insta-post-img"></a>
+                                <a class="image_popup" href="image/instra-large-img-8.jpg"><img src="{% static 'image/instra-img-8.jpg' %}" alt="insta-post-img"></a>
+                                <a class="image_popup" href="image/instra-large-img-9.jpg"><img src="{% static 'image/instra-img-9.jpg' %}" alt="insta-post-img"></a>
+                            </div>
+                        </div>
+                        <div class="shop-hover-style-2 side-box">
+                            <a href="#" class="offer-banner shop-hover">
+                            <img src="{% static 'image/offer-banner-13.jpg' %}" alt="offer-banner">
+                            <div class="shop-hover-text">
+                                <div class="shop-hover-wrap">
+                                    <h5>Latest Fashion</h5>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Content Sidebar Section -->
+
+    <!-- End Newsletter Section -->
+
+    <!-- Start Footer Section -->
+    {% endblock content %}

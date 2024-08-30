@@ -1,0 +1,25 @@
+{% extends 'patials/base.html' %}
+{% load static %}
+{% block content %}
+   
+<ul class="header_list text-text-md-center text-center">
+  <li>
+    
+    <a href="#test-popup1" class="open-popup-link">Login</a>
+      <div id="test-popup2" class="white-popup lr-popup ">
+          <h4>Login</h4>
+    
+          <form class="subscribe-popup-form" method="POST" action="">
+              {% csrf_token %}
+            <input name="email"  required type="email" placeholder="Enter Your Email">
+            <input name="password"  required type="password" placeholder="Enter Your Password">
+              <button class="btn btn-primary" title="" type="submit">Login</button>
+          </form>
+          <h6>Don't have an account?</h6>
+          <a href="{% url 'userauths:sign-up' %}" class=""><h6>Click here to Sign up</h6></a>
+      </div>
+  </li>
+</ul>
+  
+{% endblock content %} 
+

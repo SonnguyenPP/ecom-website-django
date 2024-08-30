@@ -1,0 +1,38 @@
+{% extends 'patials/base.html' %}
+{% load static %}
+{% block content %}
+   
+<ul class="header_list text-text-md-center text-center">
+  <li>
+    
+    <a href="#test-popup1" class="open-popup-link">Login</a>
+      <div id="test-popup2" class="white-popup lr-popup ">
+          <h4>Registration</h4>
+          {% comment %} {% if  form.error %}
+          <div class="alert alert-danger">
+            <strong>{{form.error}}</strong>
+
+          </div>
+          {% endif %} {% endcomment %}
+          {% if form.errors %}
+          <div class="alert alert-danger">
+            <strong>{{form.errors}}</strong>
+          </div>
+          {% endif %}
+
+          <form class="subscribe-popup-form" method="post" action="">
+              {% csrf_token %}
+          
+              {{form.username}}
+              {{form.email}}
+              {{form.password1}}
+              {{form.password2}}
+
+              <button class="btn btn-primary" title="" type="submit">Register</button>
+          </form>
+      </div>
+  </li>
+</ul>
+  
+{% endblock content %} 
+
