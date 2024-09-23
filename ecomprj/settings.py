@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+
+from  environs import Env
+env = Env()
+env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'taggit',
     'ckeditor',
+    'django.contrib.humanize',
+    
+    'paypal.standard.ipn',
     
     'core',
     'userauths',
@@ -146,6 +153,7 @@ JAZZMIN_SETTINGS = {
     'site_logo': "image/loader_logo.png",
     'copyright': "ecom",
 }
+LOGIN_URL = "userauths:sign-in"
 
 AUTH_USER_MODEL = 'userauths.User'
 
@@ -165,3 +173,10 @@ CKEDITOR_CONFIGS = {
         ),
     }
 }
+
+
+PAYPAL_RECEIVER_EMAIL = 'ocnguyen669@gmail.com'
+PAYPAL_TEST = True
+
+STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY")
+STRIPE_PUBLIC_KEY = env("STRIPE_SECRET_KEY")
