@@ -6,12 +6,6 @@ from django.conf import settings
 from userauths.models import Profile, User
 from django.contrib.auth.decorators import login_required
 
-import os
-template_path_signin = os.path.join('userauths', 'sign-in.html')
-template_path_signout = os.path.join('userauths', 'sign-in.html')
-template_path_profileupdate = os.path.join('userauths', 'profile-update.html')
-
-
 
 # User = settings.AUTH_USER_MODEL
 # Create your views here.
@@ -45,6 +39,9 @@ def login_view(request):
     if request.user.is_authenticated:
         messages.warning(request,f"ban da dang nhap")
         return redirect("core:index")
+    
+    
+    
     if request.method == "POST":
         email = request.POST.get("email")
         password =  request.POST.get("password")
@@ -65,7 +62,7 @@ def login_view(request):
         else:
              messages.warning(request,"nguoi dun gko ton tai")
         
-    return render(request,template_path_signin)
+    return render(request, "userauths\sign-in.html")
 
 def logout_view(request):
     logout(request)
@@ -95,4 +92,4 @@ def profile_update(request):
         
     }
     
-    return render(request,template_path_profileupdate,context)
+    return render(request, "userauths/profile-update.html",context)
